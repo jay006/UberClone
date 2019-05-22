@@ -2,6 +2,8 @@ package com.upgrad.uberclone;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -100,5 +102,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void openNavigation(View view) {
         //TODO open navigation
 
+    }
+
+    public void startSearch(View view) {
+        Location currentLocation = (Location) mapHelper.getLastKnowLocation();
+        Intent intent = new Intent(this, SearchActivity.class);
+        intent.putExtra(Constants.LATITUDE, currentLocation.getLatitude());
+        intent.putExtra(Constants.LONGITUDE, currentLocation.getLongitude());
+        startActivityForResult(intent, Constants.SEARCH_REQUEST_CODE);
     }
 }
