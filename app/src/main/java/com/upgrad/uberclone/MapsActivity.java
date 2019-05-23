@@ -274,6 +274,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
 
             // Drawing polyline in the Google Map for the i-th route
+            map.clear();
             if (lineOptions != null) {
                 map.addPolyline(lineOptions);
             } else {
