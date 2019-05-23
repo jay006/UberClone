@@ -1,5 +1,6 @@
 package com.upgrad.uberclone;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.location.Address;
@@ -38,8 +39,6 @@ public class SearchActivity extends AppCompatActivity {
 
     private TextView sourceTV;
     private EditText destinationET;
-    private RecyclerView searchList;
-    private LinearLayout moreContainer;
 
     private double latitude = 0.00;
     private double longitude = 0.00;
@@ -57,9 +56,6 @@ public class SearchActivity extends AppCompatActivity {
         longitude = intent.getDoubleExtra(Constants.LONGITUDE, 0);
 
         sourceTV = findViewById(R.id.sourceTV);
-        //destinationET = findViewById(R.id.destinationET);
-        moreContainer = findViewById(R.id.moreContainer);
-        searchList = findViewById(R.id.searchList);
 
         getNameFromCoordinate();
         initListener();
@@ -106,7 +102,7 @@ public class SearchActivity extends AppCompatActivity {
             Intent resultIntent = new Intent();
             resultIntent.putExtra(Constants.LATITUDE, addresses.get(0).getLatitude());
             resultIntent.putExtra(Constants.LONGITUDE, addresses.get(0).getLongitude());
-            setResult(Constants.SEARCH_REQUEST_CODE, resultIntent);
+            setResult(Activity.RESULT_OK, resultIntent);
             finish();
         }
 
@@ -129,8 +125,13 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void goBack(View view) {
+        onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
         Intent resultIntent = new Intent();
-        setResult(Constants.SEARCH_REQUEST_CODE, resultIntent);
+        setResult(Activity.RESULT_CANCELED, resultIntent);
         finish();
     }
 }
