@@ -38,10 +38,10 @@
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="5dp"
             android:background="@color/grey_200"
+            android:lines="1"
             android:padding="10dp"
             android:text="Unamed Road"
-            android:textSize="20sp"
-            android:lines="1"/>
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -62,21 +62,32 @@
             android:textColor="@color/grey_900"
             android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/destinationET"
+        <!--<EditText-->
+        <!--android:id="@+id/destinationET"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="10dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginEnd="30dp"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:background="@color/grey_200"-->
+        <!--android:focusedByDefault="true"-->
+        <!--android:hint="Where to?"-->
+        <!--android:lines="1"-->
+        <!--android:padding="10dp"-->
+        <!--android:textColor="@color/black_1000"-->
+        <!--android:textSize="20sp" />-->
+
+        <fragment
+            android:id="@+id/autocomplete_fragment"
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="5dp"
-            android:background="@color/grey_200"
-            android:focusedByDefault="true"
-            android:hint="Where to?"
-            android:padding="10dp"
-            android:textColor="@color/black_1000"
-            android:textSize="20sp"
-            android:lines="1"/>
+            android:layout_marginBottom="5dp" />
+
 
     </LinearLayout>
 
@@ -213,6 +224,11 @@
 
         </LinearLayout>
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/searchList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
 
     </FrameLayout>
 
