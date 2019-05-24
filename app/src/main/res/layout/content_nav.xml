@@ -18,7 +18,7 @@
             android:layout_margin="20dp"
             android:layout_weight="2"
             android:gravity="center"
-            android:text="Hello, Shriom"
+            android:text="Hello, Enjoy your ride"
             android:textColor="@color/white_1000"
             android:textSize="24sp" />
 
@@ -73,9 +73,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Help"
             android:onClick="navigationItemClicked"
             android:tag="2"
+            android:text="Help"
             android:textColor="@color/black_1000"
             android:textSize="24sp" />
 
@@ -85,9 +85,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Settings"
             android:onClick="navigationItemClicked"
-            android:tag="4"
+            android:tag="3"
+            android:text="Exit"
             android:textColor="@color/black_1000"
             android:textSize="24sp" />
 

@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -193,13 +194,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 startActivity(new Intent(this, HistoryActivity.class));
                 break;
             case "2":
-                showToast("Help");
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://help.uber.com/"));
+                startActivity(browserIntent);
                 break;
             case "3":
-                showToast("Payment");
-                break;
-            case "4":
-                showToast("Setting");
+                finish();
                 break;
         }
 
