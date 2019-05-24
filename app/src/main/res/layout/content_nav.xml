@@ -34,7 +34,7 @@
             android:layout_margin="10dp"
             android:text="Dom more with your account"
             android:textColor="@color/grey_400"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -43,7 +43,7 @@
             android:layout_marginBottom="20dp"
             android:text="Make money Driviing"
             android:textColor="@color/white_1000"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
 
     </LinearLayout>
@@ -76,18 +76,6 @@
             android:text="Help"
             android:onClick="navigationItemClicked"
             android:tag="2"
-            android:textColor="@color/black_1000"
-            android:textSize="24sp" />
-
-
-        <TextView
-            android:id="@+id/paymentTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Payments"
-            android:onClick="navigationItemClicked"
-            android:tag="3"
             android:textColor="@color/black_1000"
             android:textSize="24sp" />
 

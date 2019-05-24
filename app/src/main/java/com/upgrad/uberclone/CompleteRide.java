@@ -33,7 +33,7 @@ public class CompleteRide extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.complete_ride, container, false);
 
-        Bundle args = getArguments();
+        final Bundle args = getArguments();
 
         source = v.findViewById(R.id.source_textView);
         destination = v.findViewById(R.id.destination_textView);
@@ -45,7 +45,16 @@ public class CompleteRide extends DialogFragment {
         completeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO save to Shared pref.
+
+                long unixTime = System.currentTimeMillis() / 1000L;
+
+                TripModel trip = new TripModel(
+                        args.getString(Constants.SOURCE),
+                        args.getString(Constants.DESTINATION),
+                        unixTime);
+
+                SharedPref.getInstance(getContext()).saveTrips(trip);
+
                 dismiss();
             }
         });
