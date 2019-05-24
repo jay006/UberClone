@@ -50,7 +50,7 @@ public class SharedPref {
 
     }
 
-    private List<TripModel> getAllTrip() {
+    public List<TripModel> getAllTrip() {
 
         Gson gson = new Gson();
         String json = sharedPreference.getString(TRIPS, "");

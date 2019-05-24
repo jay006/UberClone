@@ -190,7 +190,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         TextView v = (TextView) view;
         switch (String.valueOf(v.getTag())) {
             case "1":
-                showToast("Your trip");
+                startActivity(new Intent(this, HistoryActivity.class));
                 break;
             case "2":
                 showToast("Help");
