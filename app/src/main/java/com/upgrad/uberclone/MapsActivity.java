@@ -8,13 +8,16 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +48,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private DrawerLayout drawer;
     private NavigationView navigationView;
+    private LinearLayout bottomSheet;
+    private BottomSheetBehavior sheetBehavior;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +60,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         drawer = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
+
+        bottomSheet = findViewById(R.id.bottom_sheet);
+        sheetBehavior = BottomSheetBehavior.from(bottomSheet);
 
         // Build the map.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -196,7 +204,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+    public void payRide(View view) {
+
+        //TODO proceed the payment
+        showToast("Payment done");
+        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
+    }
+
     private class FetchUrl extends AsyncTask<String, Void, String> {
+
 
         @Override
         protected String doInBackground(String... urls) {
@@ -267,7 +284,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 // Adding all the points in the route to LineOptions
                 lineOptions.addAll(points);
                 lineOptions.width(10);
-                lineOptions.color(Color.RED);
+                lineOptions.color(getResources().getColor(R.color.grey_700));
 
                 Log.d("onPostExecute", "onPostExecute lineoptions decoded");
 
@@ -277,11 +294,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             map.clear();
             if (lineOptions != null) {
                 map.addPolyline(lineOptions);
+                startRideInfo();
             } else {
                 Log.d("onPostExecute", "without Polylines drawn");
             }
         }
 
+    }
+
+    private void startRideInfo() {
+        sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 
 }
