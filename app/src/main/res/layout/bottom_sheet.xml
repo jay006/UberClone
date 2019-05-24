@@ -65,7 +65,7 @@
         android:background="#000"
         android:onClick="payRide"
         android:foreground="?attr/selectableItemBackground"
-        android:text="PROCEED PAYMENT"
+        android:text="SELECT RIDE"
         android:textColor="#fff" />
 
 

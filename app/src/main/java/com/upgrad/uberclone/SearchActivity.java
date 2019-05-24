@@ -43,6 +43,9 @@ public class SearchActivity extends AppCompatActivity {
     private double latitude = 0.00;
     private double longitude = 0.00;
 
+    private String completeAddress;
+    private String destination;
+
     private List<Address> addresses = new ArrayList<>();
     private static final String TAG = SearchActivity.class.getCanonicalName();
 
@@ -76,6 +79,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onPlaceSelected(Place place) {
                 Log.i(TAG, "Place: " + place.getName() + ", " + place.getId());
+                destination = place.getName();
                 getListOfAddress(place.getName());
             }
 
@@ -102,6 +106,8 @@ public class SearchActivity extends AppCompatActivity {
             Intent resultIntent = new Intent();
             resultIntent.putExtra(Constants.LATITUDE, addresses.get(0).getLatitude());
             resultIntent.putExtra(Constants.LONGITUDE, addresses.get(0).getLongitude());
+            resultIntent.putExtra(Constants.SOURCE, completeAddress );
+            resultIntent.putExtra(Constants.DESTINATION, destination );
             setResult(Activity.RESULT_OK, resultIntent);
             finish();
         }
@@ -115,7 +121,7 @@ public class SearchActivity extends AppCompatActivity {
             List<Address> addresses = gcd.getFromLocation(latitude, longitude, 1);
             if (addresses.size() > 0) {
                 Address address = addresses.get(0);
-                String completeAddress = address.getSubAdminArea() + ", " + address.getLocality() + ", " + address.getAdminArea() + ", " + address.getCountryName() + " - " + address.getPostalCode();
+                completeAddress = address.getSubAdminArea() + ", " + address.getLocality() + ", " + address.getAdminArea() + ", " + address.getCountryName() + " - " + address.getPostalCode();
                 sourceTV.setText(completeAddress.trim());
             }
         } catch (IOException e) {

@@ -6,4 +6,6 @@ public interface Constants {
     String LONGITUDE = "longitude";
     int SEARCH_REQUEST_CODE = 1;
 
+    String SOURCE = "source";
+    String DESTINATION = "destination";
 }

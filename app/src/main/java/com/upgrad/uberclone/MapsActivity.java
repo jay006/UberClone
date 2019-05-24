@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -50,6 +51,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private NavigationView navigationView;
     private LinearLayout bottomSheet;
     private BottomSheetBehavior sheetBehavior;
+
+    private String source;
+    private String destination;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,6 +140,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             double latitiude = data.getDoubleExtra(Constants.LATITUDE, 0.0);
             double longitude = data.getDoubleExtra(Constants.LONGITUDE, 0.0);
+            source = data.getStringExtra(Constants.SOURCE);
+            destination = data.getStringExtra(Constants.DESTINATION);
 
             getPath(latitiude, longitude);
 
@@ -209,6 +215,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         //TODO proceed the payment
         showToast("Payment done");
         sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
+        FragmentManager fm = getSupportFragmentManager();
+        CompleteRide completeRide = CompleteRide.newInstance(source, destination);
+        completeRide.setCancelable(false);
+        completeRide.show(fm, "fragment_ride");
 
     }
 
