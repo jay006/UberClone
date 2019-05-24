@@ -29,7 +29,7 @@ public class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
         TripModel trip = trips.get(i);
-        String fare = "Fare %0.1f" + ((Math.random() * (16 - 4) + 1) + 4);
+        String fare = "Fare $" + ((int)(Math.random() * (16 - 4) + 1) + 4);
         viewHolder.fare.setText(fare);
         viewHolder.time.setText(getTime(trip.getTime()));
         viewHolder.source.setText(trip.getSource());

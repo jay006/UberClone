@@ -127,9 +127,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void deviceLocation(LatLng latLng, int zoom, boolean status) {
         if (status) {
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+            map.getUiSettings().setMyLocationButtonEnabled(true);
         } else {
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
             map.getUiSettings().setMyLocationButtonEnabled(false);
+            mapHelper.getDeviceLocation();
         }
     }
 
