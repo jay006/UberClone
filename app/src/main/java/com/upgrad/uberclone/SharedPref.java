@@ -61,7 +61,7 @@ public class SharedPref {
             try {
                 JSONArray jsonArray = new JSONArray(json);
                 for (int i = 0, size = jsonArray.length(); i < size; i++) {
-                    trips.add(gson.fromJson(jsonArray.get(0).toString(), TripModel.class));
+                    trips.add(gson.fromJson(jsonArray.get(i).toString(), TripModel.class));
                 }
 
             } catch (JSONException e) {

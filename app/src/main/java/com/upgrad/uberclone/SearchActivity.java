@@ -75,6 +75,7 @@ public class SearchActivity extends AppCompatActivity {
         autocompleteFragment.setCountry("IN");
         autocompleteFragment.setTypeFilter(TypeFilter.ADDRESS);
 
+
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
@@ -106,8 +107,8 @@ public class SearchActivity extends AppCompatActivity {
             Intent resultIntent = new Intent();
             resultIntent.putExtra(Constants.LATITUDE, addresses.get(0).getLatitude());
             resultIntent.putExtra(Constants.LONGITUDE, addresses.get(0).getLongitude());
-            resultIntent.putExtra(Constants.SOURCE, completeAddress );
-            resultIntent.putExtra(Constants.DESTINATION, destination );
+            resultIntent.putExtra(Constants.SOURCE, completeAddress);
+            resultIntent.putExtra(Constants.DESTINATION, destination);
             setResult(Activity.RESULT_OK, resultIntent);
             finish();
         }
